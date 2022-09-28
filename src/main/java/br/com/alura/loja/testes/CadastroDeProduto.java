@@ -18,7 +18,7 @@ public class CadastroDeProduto {
 		EntityManager em = JPAUtil.getEntityManager();
 		ProdutoDao produtoDao = new ProdutoDao(em);
 		
-		Produto p = produtoDao.buscarPorId(19l);
+		Produto p = produtoDao.buscarPorId(1l);
 		System.out.println(p.getPreco());
 		
 		List<Produto> todos = produtoDao.buscarPorNomeDaCategoria("celulares");
