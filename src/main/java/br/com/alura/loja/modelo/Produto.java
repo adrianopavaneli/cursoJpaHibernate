@@ -21,26 +21,19 @@ public class Produto {
 	private String descricao;
 	private BigDecimal preco;
 	private LocalDate dataCadastro = LocalDate.now();
+	
 	@ManyToOne
 	private Categoria categoria;
 	
 	public Produto() {
-		
 	}
 	
-	
-	
-
 	public Produto(String nome, String descricao, BigDecimal preco, Categoria categoria) {
-		super();
 		this.nome = nome;
 		this.descricao = descricao;
 		this.preco = preco;
 		this.categoria = categoria;
-		
 	}
-
-	
 
 	public Long getId() {
 		return id;
@@ -89,5 +82,5 @@ public class Produto {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-	
+
 }
