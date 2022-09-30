@@ -21,16 +21,20 @@ public class CadastroDeProduto {
 		Produto p = produtoDao.buscarPorId(1l);
 		System.out.println(p.getPreco());
 		
-		List<Produto> todos = produtoDao.buscarPorNomeDaCategoria("celulares");
+		List<Produto> todos = produtoDao.buscarPorNomeDaCategoria("CELULARES");
 		todos.forEach(p2 -> System.out.println(p.getNome()));
 	
-//		BigDecimal precoDoProduto = produtoDao.buscarPrecoDoProdutoComNome("Xiaomi Redmi");
-//		System.out.println("Preco do Produto: " +precoDoProduto);
+		BigDecimal precoDoProduto = produtoDao.buscarPrecoDoProdutoComNome("Xiaomi Redmi");
+		System.out.println("Preco do Produto: " +precoDoProduto);
 	}
 
 	private static void cadastrarProduto() {
 		Categoria celulares = new Categoria("CELULARES");
-		Produto celular = new Produto("Xiaomi Redmi", "Muito legal", new BigDecimal("800"), celulares );
+		Categoria videogames = new Categoria("VIDEOGAMES");
+		Categoria informatica = new Categoria("INFORMATICA");
+		Produto celular = new Produto("IPHONE", "IPHONE 14", new BigDecimal("1000"), celulares );
+		Produto videogame = new Produto("PS5", "Playstation5", new BigDecimal("3000"), videogames );
+		Produto macbook = new Produto("Macbook", "Macbook Pro", new BigDecimal("8800"), informatica );
 		
 		EntityManager em = JPAUtil.getEntityManager();
 		ProdutoDao produtoDao = new ProdutoDao(em);
@@ -39,7 +43,11 @@ public class CadastroDeProduto {
 		em.getTransaction().begin();
 		
 		categoriaDao.cadastrar(celulares);
+		categoriaDao.cadastrar(videogames);
+		categoriaDao.cadastrar(informatica);
 		produtoDao.cadastrar(celular);
+		produtoDao.cadastrar(videogame);
+		produtoDao.cadastrar(macbook);
 		
 		em.getTransaction().commit();
 		em.close();

@@ -16,14 +16,12 @@ public class Cliente {
 	private String nome;
 	private String cpf;
 
-	public Cliente() {
-
-	}
-
 	public Cliente(String nome, String cpf) {
-		super();
 		this.nome = nome;
 		this.cpf = cpf;
+	}
+
+	public Cliente() {
 	}
 
 	public Long getId() {
